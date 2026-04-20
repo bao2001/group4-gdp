@@ -1,1 +1,11 @@
-
+pandas
+numpy
+matplotlib
+scikit-learn
+statsmodels
+yfinance
+pandas-datareader
+fredapi
+transformers
+torch
+jupyter
