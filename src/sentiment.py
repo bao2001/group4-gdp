@@ -4,9 +4,6 @@ FinBERT Financial News Sentiment Analyzer
 Fetches financial headlines from Alpha Vantage and scores them using
 ProsusAI/finbert via HuggingFace Transformers.
 
-Dependencies:
-    pip install transformers torch requests pandas python-dotenv
-
 Usage:
     python finbert_sentiment.py
 
@@ -26,11 +23,13 @@ Alpha Vantage free-tier limits:
 import os
 import time
 import logging
+
 from dataclasses import dataclass, field
 from typing import Optional
 
 import requests
 import pandas as pd
+
 from dotenv import load_dotenv
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
 
