@@ -44,6 +44,8 @@ Alpha Vantage free-tier limits:
 #     "negative": (df["finbert_label"] == "negative").mean(),
 #     "net":      result["net_sentiment"],
 # }
+
+# ALPHA_VANTAGE_API_KEY=TBPRU9OIS46QFNAI
 #################################################################################
 
 
