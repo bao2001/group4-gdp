@@ -3,6 +3,17 @@ from sentiment import SentimentAnalyzer
 
 import os
 
+# Base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Data folders
+RAW_DATA_DIR       = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
+
+# Output folders
+FIGURES_DIR        = os.path.join(BASE_DIR, "outputs", "figures")
+TABLES_DIR         = os.path.join(BASE_DIR, "outputs", "tables")
+
 # call our sentiment script and give it a start date for pulling data
 analyzer = SentimentAnalyzer(av_api_key=os.getenv("ALPHA_VANTAGE_API_KEY"))
 result = analyzer.get_net_sentiment(time_from="20260101T0000")
@@ -22,5 +33,9 @@ sentiment = {
     "negative": (df["finbert_label"] == "negative").mean(),
     "net":      result["net_sentiment"],
 }
+
+from sentiment_visuals import plot_all
+plot_all(df=result["df"], series=result["series"], output_dir=FIGURES_DIR)
+
 
 

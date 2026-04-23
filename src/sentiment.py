@@ -45,7 +45,7 @@ Alpha Vantage free-tier limits:
 #     "net":      result["net_sentiment"],
 # }
 
-# ALPHA_VANTAGE_API_KEY=TBPRU9OIS46QFNAI
+# ALPHA_VANTAGE_API_KEY=TWVGV64WICIFEQZL
 #################################################################################
 
 
@@ -78,6 +78,17 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
+
+# Base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Data folders
+RAW_DATA_DIR       = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
+
+# Output folders
+FIGURES_DIR        = os.path.join(BASE_DIR, "outputs", "figures")
+TABLES_DIR         = os.path.join(BASE_DIR, "outputs", "tables")
 
 ALPHA_VANTAGE_BASE = "https://www.alphavantage.co/query"
 FINBERT_MODEL_ID   = "ProsusAI/finbert"
@@ -582,9 +593,9 @@ if __name__ == "__main__":
     log.info("Articles scored: %d", result["article_count"])
 
     # Save outputs
-    df.to_csv("news_sentiment_raw.csv", index=False)
+    df.to_csv(f"{RAW_DATA_DIR}news_sentiment_raw.csv", index=False)
     if not daily.empty:
-        daily.to_csv("news_sentiment_daily.csv")
+        daily.to_csv(f"{RAW_DATA_DIR}news_sentiment_daily.csv")
     log.info(
         "Saved news_sentiment_raw.csv%s",
         " and news_sentiment_daily.csv" if not daily.empty else "",
