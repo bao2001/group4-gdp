@@ -2,8 +2,6 @@
 from sentiment import SentimentAnalyzer
 
 import os
-import warnings
-warnings.filterwarnings('ignore')
 
 # call our sentiment script and give it a start date for pulling data
 analyzer = SentimentAnalyzer(av_api_key=os.getenv("ALPHA_VANTAGE_API_KEY"))
