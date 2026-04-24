@@ -25,6 +25,9 @@ print(result["series"])           # net sentiment broken down by quarter
 print(result["df"].head())        # full scored article table
 
 # an efficient way to index specific values should we need them
+# I think the best way to is just pull the data from the beginning of the API's capability
+# the data will be stored in this dataframe and then we can sort it by date and then pull
+# the data by quarter, week or year or whatever works best for our model overall
 df = result['df']
 
 sentiment = {
