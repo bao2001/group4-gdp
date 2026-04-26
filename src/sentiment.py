@@ -595,7 +595,7 @@ if __name__ == "__main__":
     # Save outputs
     df.to_csv(f"{RAW_DATA_DIR}news_sentiment_raw.csv", index=False)
     if not daily.empty:
-        daily.to_csv(f"{RAW_DATA_DIR}news_sentiment_daily.csv")
+        daily.to_csv(f"{PROCESSED_DATA_DIR}news_sentiment_daily.csv")
     log.info(
         "Saved news_sentiment_raw.csv%s",
         " and news_sentiment_daily.csv" if not daily.empty else "",

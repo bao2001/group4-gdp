@@ -59,6 +59,16 @@ plt.rcParams.update({
     "axes.labelsize":   11,
 })
 
+# Base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Data folders
+RAW_DATA_DIR       = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
+
+# Output folders
+FIGURES_DIR        = os.path.join(BASE_DIR, "outputs", "figures")
+TABLES_DIR         = os.path.join(BASE_DIR, "outputs", "tables")
 
 # ---------------------------------------------------------------------------
 # Plot 1 — Sentiment Distribution Pie Chart
@@ -373,8 +383,8 @@ if __name__ == "__main__":
     you can regenerate the plots without hitting the API again:
         python sentiment_plots.py
     """
-    RAW_CSV     = "news_sentiment_raw.csv"
-    QUARTER_CSV = "news_sentiment_quarterly.csv"   # optional — computed from raw if missing
+    RAW_CSV     = f"{RAW_DATA_DIR}news_sentiment_raw.csv"
+    QUARTER_CSV = f"{PROCESSED_DATA_DIR}news_sentiment_quarterly.csv"   # optional — computed from raw if missing
 
     if not os.path.exists(RAW_CSV):
         raise SystemExit(
@@ -397,6 +407,5 @@ if __name__ == "__main__":
 
     series = df_copy.groupby("period").apply(net_sentiment).rename("net_sentiment")
 
-    plot_all(df=df, series=series, output_dir="sentiment_plots")
+    plot_all(df=df, series=series, output_dir=f"{FIGURES_DIR}sentiment_plots")
 
-    
