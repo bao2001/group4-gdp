@@ -92,6 +92,7 @@ TABLES_DIR         = os.path.join(BASE_DIR, "outputs", "tables")
 
 ALPHA_VANTAGE_BASE = "https://www.alphavantage.co/query"
 FINBERT_MODEL_ID   = "ProsusAI/finbert"
+ALPHA_VANTAGE_API_KEY ='TWVGV64WICIFEQZL'
 
 # Topics relevant to GDP / macroeconomic analysis.
 # Full list: https://www.alphavantage.co/documentation/#news-sentiment
@@ -559,7 +560,7 @@ def print_summary(df: pd.DataFrame, agg_df: Optional[pd.DataFrame] = None) -> No
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    av_key = os.getenv("ALPHA_VANTAGE_API_KEY", "")
+    av_key = os.getenv("ALPHA_VANTAGE_API_KEY", "") | ALPHA_VANTAGE_API_KEY
     if not av_key:
         raise SystemExit(
             "Set ALPHA_VANTAGE_API_KEY in your environment or a .env file.\n"
